@@ -1,20 +1,59 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- <div class="main">
+  <div class="tool-bar">
+    <div (click)="addSection()" class="tool-item" title="Add Section">Section
+    </div>
 
+    <div class="tool-item" title="Add Table">Table
+    </div>
+  </div>
+  <div class="template-page">
+    <div class="sub-template" *ngFor="let template of templates; let idx = index" (contextmenu)="deleteTemplate($event, idx)">
+      <ng-container [ngSwitch]="template.type">
+        <div *ngSwitchCase="'section'">
+          <div class="section-title">
+            <input type="text" [(ngModel)]="template.header">
+          </div>
+          <div class="section-description">
+            <input type="text" [(ngModel)]="template.description">
+          </div>
+        </div>
+      </ng-container>
+    </div>
+     <app-element-container></app-element-container> 
+  </div>
+</div> -->
+
+<div class="main">
+  <div class="header"></div>
+  <div class="side-menu">
+    <div (click)="addSection()" class="tool-item" title="Add Section">Section
+    </div>
+
+    <div (click)="addTable()" class="tool-item" title="Add Table">Table
+    </div>
+    <div (click)="addStatement()" class="tool-item" title="Add Statement">Statement
+    </div>
+    <div class="tool-item" title="ReArrange"><label>Re-Arrange<input [(ngModel)]="dragMode" type="checkbox"></label>
+    </div>
+  </div>
+  <div class="template">
+    <div class="template-page">
+      <div draggable="true" class="sub-template" *ngFor="let template of templates; let idx = index" (dragover)="allowDrop($event)"
+        (dragstart)="dragStart($event, idx)">
+        <ng-container [ngSwitch]="template.type">
+          <div *ngSwitchCase="'section'">
+            <app-section></app-section>
+          </div>
+          <div *ngSwitchCase="'statement'">
+            <app-statement></app-statement>
+          </div>
+          <div *ngSwitchCase="'table'">
+            <app-table></app-table>
+          </div>
+        </ng-container>
+        <div *ngIf="dragMode" class="overlay">
+        </div>
+        <!-- <app-element-container></app-element-container> -->
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,27 @@
+.element__container {
+  padding: 0;
+  position: absolute;
+  background-color: white;
+}
+
+.right__point {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-left: -10px;
+  margin-top: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+}
+
+.left__point {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-left: 0;
+  margin-top: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+}
