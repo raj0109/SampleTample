@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 
 export interface ItemStateModel {
   state: string;
@@ -23,23 +23,14 @@ export interface SectionModel {
   templateUrl: "./section.component.html",
   styleUrls: ["./section.component.css"]
 })
-export class SectionComponent implements OnInit {
-  section: SectionModel = {
-    name: "Liver",
-    type: "Section",
-    items: [
-      {
-        name: "",
-        stateoptions: [],
-        visible: true
-      }
-    ]
-  };
+export class SectionComponent implements OnChanges {
+  @Input()
+  buildJSON: SectionModel;
 
   constructor() {}
 
   addItem() {
-    this.section.items.push({
+    this.buildJSON.items.push({
       name: "ItemName",
       stateoptions: [],
       visible: true
@@ -47,12 +38,22 @@ export class SectionComponent implements OnInit {
   }
 
   addState(itemIndex) {
-    this.section.items[itemIndex].stateoptions.push({
+    this.buildJSON.items[itemIndex].stateoptions.push({
       state: "",
       impression: "",
       PI: ""
     });
   }
 
-  ngOnInit() {}
+  deleteState(itemIndex, stateIndex) {
+    this.buildJSON.items[itemIndex].stateoptions.splice(stateIndex, 1);
+  }
+
+  deleteItem(itemIndex: number) {
+    this.buildJSON.items.splice(itemIndex, 1);
+  }
+
+  ngOnChanges(changes) {
+    console.log(changes);
+  }
 }

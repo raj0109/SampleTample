@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-statement',
-  templateUrl: './statement.component.html',
-  styleUrls: ['./statement.component.css']
+  selector: "app-statement",
+  templateUrl: "./statement.component.html",
+  styleUrls: ["./statement.component.css"]
 })
-export class StatementComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class StatementComponent {
+  @Input()
+  buildJSON;
 }

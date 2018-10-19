@@ -1,59 +1,35 @@
-<!-- <div class="main">
-  <div class="tool-bar">
-    <div (click)="addSection()" class="tool-item" title="Add Section">Section
-    </div>
-
-    <div class="tool-item" title="Add Table">Table
-    </div>
-  </div>
-  <div class="template-page">
-    <div class="sub-template" *ngFor="let template of templates; let idx = index" (contextmenu)="deleteTemplate($event, idx)">
-      <ng-container [ngSwitch]="template.type">
-        <div *ngSwitchCase="'section'">
-          <div class="section-title">
-            <input type="text" [(ngModel)]="template.header">
-          </div>
-          <div class="section-description">
-            <input type="text" [(ngModel)]="template.description">
-          </div>
-        </div>
-      </ng-container>
-    </div>
-     <app-element-container></app-element-container> 
-  </div>
-</div> -->
-
 <div class="main">
-  <div class="header"></div>
+  <div class="header">
+    <button (click)="handleSave()" class="btn btn-info">Save</button>
+  </div>
   <div class="side-menu">
-    <div (click)="addSection()" class="tool-item" title="Add Section">Section
+    <div draggable="true" (dragstart)="dragStart($event, 'Section')" (click)="addSection()" class="tool-item" title="Add Section">Section
     </div>
 
-    <div (click)="addTable()" class="tool-item" title="Add Table">Table
+    <div draggable="true" (dragstart)="dragStart($event, 'Table')" (click)="addTable()" class="tool-item" title="Add Table">Table
     </div>
-    <div (click)="addStatement()" class="tool-item" title="Add Statement">Statement
+    <div draggable="true" (dragstart)="dragStart($event, 'Statement')" (click)="addStatement()" class="tool-item" title="Add Statement">Statement
     </div>
     <div class="tool-item" title="ReArrange"><label>Re-Arrange<input [(ngModel)]="dragMode" type="checkbox"></label>
     </div>
   </div>
   <div class="template">
     <div class="template-page">
-      <div draggable="true" class="sub-template" *ngFor="let template of templates; let idx = index" (dragover)="allowDrop($event)"
-        (dragstart)="dragStart($event, idx)">
+      <div class="sub-template" *ngFor="let template of templates; let idx = index" (dragover)="allowDrop($event)"
+        (drop)="handleDrop($event, idx)">
         <ng-container [ngSwitch]="template.type">
           <div *ngSwitchCase="'section'">
-            <app-section></app-section>
+            <app-section [buildJSON]="template"></app-section>
           </div>
           <div *ngSwitchCase="'statement'">
-            <app-statement></app-statement>
+            <app-statement [buildJSON]="template"></app-statement>
           </div>
           <div *ngSwitchCase="'table'">
-            <app-table></app-table>
+            <app-table [buildJSON]="template"></app-table>
           </div>
         </ng-container>
         <div *ngIf="dragMode" class="overlay">
         </div>
-        <!-- <app-element-container></app-element-container> -->
       </div>
     </div>
   </div>

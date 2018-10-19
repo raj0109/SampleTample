@@ -1,30 +1,32 @@
-<div class="section-title">
-  <input type="text" [(ngModel)]="section.name">
-</div>
-<div *ngFor="let item of section.items; let itemIndex = index" class="section-item">
-  <div class="section-item-name">
-    <textarea [(ngModel)]="item.name"></textarea>
-    <input type="checkbox">
-    <div class="btn btn-delete">X</div>
+<ng-container *ngIf="buildJSON">
+  <div class="section-title">
+    <input class="full__width" type="text" [(ngModel)]="buildJSON.name">
   </div>
+  <div *ngFor="let item of buildJSON.items; let itemIndex = index" class="section-item">
+    <div class="section-item-name">
+      <textarea [(ngModel)]="item.name"></textarea>
+      <input type="checkbox">
+      <div (click)="deleteItem(itemIndex)" class="btn btn-delete">X</div>
+    </div>
 
-  <div class="item-state-table">
-    <table>
-      <tr>
-        <th>State</th>
-        <th>Impression</th>
-        <th>Patient Information</th>
-      </tr>
-      <tr *ngFor="let state of item.stateoptions">
-        <td><textarea placeholder="State" [(ngModel)]="state.state" [title]="state.state"></textarea></td>
-        <td><textarea placeholder="Impression" [(ngModel)]="state.impression" [title]="state.impression"></textarea></td>
-        <td><textarea placeholder="Patient Information" [(ngModel)]="state.PI" [title]="state.PI"></textarea></td>
-        <td class="delete-row">X</td>
-      </tr>
-      <tr>
-        <td (click)="addState(itemIndex)" colspan="3">Add More State</td>
-      </tr>
-    </table>
+    <div class="item-state-table">
+      <table>
+        <tr>
+          <th>State</th>
+          <th>Impression</th>
+          <th>Patient Information</th>
+        </tr>
+        <tr *ngFor="let state of item.stateoptions; let stateIndex = index">
+          <td><textarea placeholder="State" [(ngModel)]="state.state" [title]="state.state"></textarea></td>
+          <td><textarea placeholder="Impression" [(ngModel)]="state.impression" [title]="state.impression"></textarea></td>
+          <td><textarea placeholder="Patient Information" [(ngModel)]="state.PI" [title]="state.PI"></textarea></td>
+          <td (click)="deleteState(itemIndex, stateIndex)" class="delete-row">X</td>
+        </tr>
+        <tr>
+          <td (click)="addState(itemIndex)" colspan="3">Add More State</td>
+        </tr>
+      </table>
+    </div>
   </div>
-</div>
-<div class="section-item add-item" (click)="addItem($event)">Add Item</div>
+  <div class="section-item add-item" (click)="addItem($event)">Add Item</div>
+</ng-container>

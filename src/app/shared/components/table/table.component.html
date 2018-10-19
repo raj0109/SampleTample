@@ -1,14 +1,26 @@
-<table>
-  <tr>
-    <th>
-      <textarea placeholder="Table Name"></textarea>
-    </th>
-    <th>
-      <textarea placeholder="Column Name"></textarea>
-    </th>
-  </tr>
-  <tr>
-    <td><textarea placeholder="Row Name"></textarea></td>
-    <td>Row2</td>
-  </tr>
-</table>
+<ng-container *ngIf="buildJSON">
+  <div class="table__builder">
+    <label>Rows:
+      <input class="number_input" type="number" min="1" max="5" [(ngModel)]="rowCount">
+    </label>
+    <label>Columns:
+      <input class="number_input" type="number" min="1" max="5" [(ngModel)]="columnCount">
+    </label>
+    <button (click)="updateTable()" class="btn btn-info">Update</button>
+  </div>
+  <table>
+    <tr>
+      <th>
+        <textarea [(ngModel)]="name" placeholder="Table Name"></textarea>
+      </th>
+      <th *ngFor="let columnName of buildJSON.columns; let columnIndex = index; trackBy: trackByIndex">
+        <textarea [(ngModel)]="buildJSON.columns[columnIndex]" placeholder="Column Name"></textarea>
+      </th>
+    </tr>
+    <tr *ngFor="let rowName of buildJSON.rows; let rowIndex = index; trackBy: trackByIndex">
+      <td><textarea placeholder="Row Name"></textarea></td>
+      <td *ngFor="let columnName of buildJSON.columns; let columnIndex = index; trackBy: trackByIndex">
+      </td>
+    </tr>
+  </table>
+</ng-container>

@@ -1,0 +1,24 @@
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 3px;
+  margin-right: 2px;
+}
+
+.btn-info {
+  background-color: #9393d6;
+}
+
+.btn-danger {
+  background-color: #e87f7f;
+}
+
+.table__builder {
+  padding: 5px;
+}
+
+.number_input {
+  width: 60px;
+  margin-right: 10px;
+}

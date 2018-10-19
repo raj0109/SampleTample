@@ -93,7 +93,7 @@
 .statement-title {
   width: 100%;
   box-sizing: border-box;
-  background-color: #e4e4e4;
+  background-color: #aba6a6;
   padding: 10px;
 }
 
@@ -109,7 +109,7 @@
   position: relative;
 }
 
-.sub-template input {
+.sub-template .full__width {
   width: 100%;
   border: none;
   background-color: transparent;
@@ -177,4 +177,18 @@ input {
   border: black 2px solid;
   box-sizing: border-box;
   background-color: #aec727b0;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 3px;
+  margin-right: 2px;
+  outline: none;
+  border: 2px black solid;
+}
+
+.btn-info {
+  background-color: #9393d6;
 }

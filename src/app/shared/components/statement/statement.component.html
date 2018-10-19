@@ -1,4 +1,7 @@
-<div class="statement-title"> <input type="text"> </div>
-<div class="statement-description">
-  <textarea></textarea>
-</div>
+<ng-container *ngIf="buildJSON">
+  <div class="statement-title"> <input class="full__width" [(ngModel)]="buildJSON.name" placeholder="Statement Title"
+      type="text"> </div>
+  <div class="statement-description">
+    <textarea class="full__width"></textarea>
+  </div>
+</ng-container>
