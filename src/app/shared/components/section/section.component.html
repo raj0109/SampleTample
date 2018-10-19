@@ -1,6 +1,6 @@
 <ng-container *ngIf="buildJSON">
   <div class="section-title">
-    <input class="full__width" type="text" [(ngModel)]="buildJSON.name">
+    <input placeholder="Section Title" class="full__width" type="text" [(ngModel)]="buildJSON.name">
   </div>
   <div *ngFor="let item of buildJSON.items; let itemIndex = index" class="section-item">
     <div class="section-item-name">

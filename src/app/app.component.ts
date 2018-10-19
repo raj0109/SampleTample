@@ -42,7 +42,7 @@ export class AppComponent {
     switch (type) {
       case "Section":
         return {
-          name: "Liver",
+          name: "",
           type: "section",
           items: [
             {
@@ -76,6 +76,10 @@ export class AppComponent {
   }
 
   handleSave() {
+    console.log(this.templates);
+  }
+
+  updates() {
     console.log(this.templates);
   }
 }

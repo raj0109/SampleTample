@@ -25,7 +25,7 @@
             <app-statement [buildJSON]="template"></app-statement>
           </div>
           <div *ngSwitchCase="'table'">
-            <app-table [buildJSON]="template"></app-table>
+            <app-table [(value)]="templates[idx]" (valueChange)="updates()"></app-table>
           </div>
         </ng-container>
         <div *ngIf="dragMode" class="overlay">
