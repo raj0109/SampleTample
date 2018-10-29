@@ -5,10 +5,9 @@
   <div *ngFor="let item of buildJSON.items; let itemIndex = index" class="section-item">
     <div class="section-item-name">
       <textarea [(ngModel)]="item.name"></textarea>
-      <input type="checkbox">
-      <div (click)="deleteItem(itemIndex)" class="btn btn-delete">X</div>
+      <label><input [(ngModel)]="item.visible" type="checkbox"><br>Show Item Name</label>
+      <br><div (click)="deleteItem(itemIndex)" class="btn btn-delete">Remove</div>
     </div>
-
     <div class="item-state-table">
       <table>
         <tr>
@@ -20,7 +19,7 @@
           <td><textarea placeholder="State" [(ngModel)]="state.state" [title]="state.state"></textarea></td>
           <td><textarea placeholder="Impression" [(ngModel)]="state.impression" [title]="state.impression"></textarea></td>
           <td><textarea placeholder="Patient Information" [(ngModel)]="state.PI" [title]="state.PI"></textarea></td>
-          <td (click)="deleteState(itemIndex, stateIndex)" class="delete-row">X</td>
+          <td (click)="deleteState(itemIndex, stateIndex)" class="delete-cell">X</td>
         </tr>
         <tr>
           <td (click)="addState(itemIndex)" colspan="3">Add More State</td>

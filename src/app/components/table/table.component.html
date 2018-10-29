@@ -1,0 +1,23 @@
+<ng-container *ngIf="buildJSON">
+  <div class="table__builder">
+    <label>Rows:
+      <input class="number_input" type="number" min="1" max="5" [(ngModel)]="rowCount">
+    </label>
+    <label>Columns:
+      <input class="number_input" type="number" min="1" max="5" [(ngModel)]="columnCount">
+    </label>
+    <button (click)="updateTable()" class="btn btn-info">Update</button>
+  </div>
+  <table>
+    <tr>
+      <th *ngFor="let columnName of buildJSON.heading; let columnIndex = index; trackBy: trackByIndex">
+        <textarea [(ngModel)]="buildJSON.heading[columnIndex]" placeholder="Column Name"></textarea>
+      </th>
+    </tr>
+    <tr *ngFor="let rowName of buildJSON.items; let rowIndex = index; trackBy: trackByIndex">
+      <td *ngFor="let columnName of buildJSON.heading; let columnIndex = index; trackBy: trackByIndex">
+          <textarea *ngIf="columnIndex == 0" [(ngModel)]="rowName[columnIndex]" placeholder="Row Name"></textarea>
+      </td>
+    </tr>
+  </table>
+</ng-container>

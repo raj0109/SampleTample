@@ -50,8 +50,6 @@
   /* width: 100%; */
   color: black;
   box-sizing: border-box;
-  display: grid;
-  grid-template-rows: min-content min-content min-content;
 }
 
 .tool-item {
@@ -154,11 +152,15 @@ textarea {
   resize: vertical;
 }
 
-.delete-row {
+.delete-cell {
   cursor: pointer;
-  background-color: black;
+  background-color: #d44c4c;
+  border-color: #d44c4c;
   color: white;
   font-weight: bolder;
+  min-width: 30px;
+  font-family: monospace;
+  font-size: 15px;
 }
 
 input {
@@ -191,4 +193,8 @@ input {
 
 .btn-info {
   background-color: #9393d6;
+}
+
+.header {
+  
 }

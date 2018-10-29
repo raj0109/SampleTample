@@ -8,6 +8,8 @@ import { Component } from "@angular/core";
 export class AppComponent {
   title = "JSONTemplate";
   templates: any[] = [];
+  name;
+  description;
 
   dragMode = false;
 
@@ -39,9 +41,10 @@ export class AppComponent {
   }
 
   getNewTemplate(type) {
+    const template = {recom: null};
     switch (type) {
       case "Section":
-        return {
+      template['recom'] = {
           name: "",
           type: "section",
           items: [
@@ -52,19 +55,26 @@ export class AppComponent {
             }
           ]
         };
+        return template;
       case "Table":
-        return {
+      template['recom'] = {
           type: "table",
-          rows: [""],
-          columns: [""],
+          items: [
+            [],
+          ],
+          heading: [""],
           name: ""
         };
+        return template;
       case "Statement":
-        return {
+      template['recom'] = {
           type: "statement",
           name: "",
-          description: "Some Description"
+          items: [
+            {state: ''}
+          ],
         };
+        return template;
     }
   }
 
@@ -72,14 +82,18 @@ export class AppComponent {
     const newTemplate = this.getNewTemplate(
       event.dataTransfer.getData("templateName")
     );
-    this.templates.splice(index, 0, newTemplate);
+    if (newTemplate){
+      this.templates.splice(index, 0, newTemplate);
+    }
   }
 
   handleSave() {
-    console.log(this.templates);
+    const json = {name: this.name, description: this.description, template: this.templates};
+    console.log(JSON.stringify(json));
   }
 
   updates() {
-    console.log(this.templates);
+    const json = {name: this.name, description: this.description, template: this.templates};
+    console.log(json);
   }
 }

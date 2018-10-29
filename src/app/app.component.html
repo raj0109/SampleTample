@@ -1,5 +1,7 @@
 <div class="main">
   <div class="header">
+    <input [(ngModel)]="name" placeholder="Template Name" class="template__name" type="text">
+    <input [(ngModel)]="description" placeholder="Template Description" class="template__description" type="text">
     <button (click)="handleSave()" class="btn btn-info">Save</button>
   </div>
   <div class="side-menu">
@@ -17,15 +19,15 @@
     <div class="template-page">
       <div class="sub-template" *ngFor="let template of templates; let idx = index" (dragover)="allowDrop($event)"
         (drop)="handleDrop($event, idx)">
-        <ng-container [ngSwitch]="template.type">
+        <ng-container [ngSwitch]="template['recom'].type">
           <div *ngSwitchCase="'section'">
-            <app-section [buildJSON]="template"></app-section>
+            <app-section  [buildJSON]="template['recom']"></app-section>
           </div>
           <div *ngSwitchCase="'statement'">
-            <app-statement [buildJSON]="template"></app-statement>
+            <app-statement [buildJSON]="template['recom']"></app-statement>
           </div>
           <div *ngSwitchCase="'table'">
-            <app-table [(value)]="templates[idx]" (valueChange)="updates()"></app-table>
+            <app-table [(value)]="template['recom']" (valueChange)="updates()"></app-table>
           </div>
         </ng-container>
         <div *ngIf="dragMode" class="overlay">

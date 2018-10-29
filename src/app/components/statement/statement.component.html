@@ -2,6 +2,6 @@
   <div class="statement-title"> <input class="full__width" [(ngModel)]="buildJSON.name" placeholder="Statement Title"
       type="text"> </div>
   <div class="statement-description">
-    <textarea class="full__width"></textarea>
+    <textarea [(ngModel)]="buildJSON.items[0].state" class="full__width"></textarea>
   </div>
 </ng-container>

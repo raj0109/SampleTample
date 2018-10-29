@@ -1,0 +1,14 @@
+.template__name, .template__description {
+    height: 40px;
+    width: 250px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 4px;
+}
+
+.header {
+    position: relative;
+}
