@@ -30,6 +30,7 @@
             <app-table [(value)]="template['recom']" (valueChange)="updates()"></app-table>
           </div>
         </ng-container>
+        <div (click)="deleteTemplate(idx)" class="btn-close">X</div>
         <div *ngIf="dragMode" class="overlay">
         </div>
       </div>

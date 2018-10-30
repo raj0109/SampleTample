@@ -104,3 +104,24 @@ table {
 .sub-template input:focus {
   border: 1px solid blue;
 }
+
+
+.btn-close {
+  background-color: transparent;
+  color: transparent;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: -30px;
+  width: 30px;
+  height: 30px;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-close {
+  background-color: #d44c4c;
+  color: white;
+}

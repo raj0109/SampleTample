@@ -25,13 +25,6 @@ export class TemplateBuilderComponent {
     this.templates.push(this.getNewTemplate("Table"));
   }
 
-  deleteTemplate(event: Event, index: number) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    console.log(event);
-    this.templates.splice(index, 1);
-  }
-
   dragStart(event: DragEvent, dragItem: string) {
     event.dataTransfer.setData("templateName", dragItem);
   }
@@ -96,4 +89,9 @@ export class TemplateBuilderComponent {
     const json = {name: this.name, description: this.description, template: this.templates};
     console.log(json);
   }
+
+  deleteTemplate(index) {
+    this.templates.splice(index, 1);
+  }
+
 }
