@@ -51,3 +51,17 @@ table > tbody > tr:last-child {
   font-size: 15px;
   margin-top: 5px;
 }
+
+
+.section-title {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #aba6a6;
+    padding: 10px;
+}
+
+.section-description {
+    min-height: 10px;
+    background-color: #f1f3f3;
+    padding: 3px;
+}

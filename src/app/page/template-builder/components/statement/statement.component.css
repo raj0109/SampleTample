@@ -1,0 +1,12 @@
+.statement-title {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #aba6a6;
+    padding: 10px;
+}
+
+.statement-description {
+    min-height: 10px;
+    background-color: #f1f3f3;
+    padding: 3px;
+}

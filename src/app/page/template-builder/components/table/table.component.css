@@ -1,14 +1,8 @@
-
-
-.btn-danger {
-  background-color: #e87f7f;
-}
-
 .table__builder {
   padding: 5px;
 }
 
-.number_input {
+.column__count, .row__count {
   width: 60px;
   margin-right: 10px;
 }

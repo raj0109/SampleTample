@@ -28,22 +28,8 @@ textarea {
 
 
 
-input {
+input, textarea {
   font-family: monospace;
-}
-
-.overlay {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 99%;
-  height: 99%;
-  margin-right: 1px;
-  margin-bottom: 1px;
-  margin: 0;
-  border: black 2px solid;
-  box-sizing: border-box;
-  background-color: #aec727b0;
 }
 
 .btn {
@@ -61,27 +47,11 @@ input {
   background-color: #9393d6;
 }
 
-
-
 table {
   width: 100%;
   text-align: center;
 }
 
-.section-title,
-.statement-title {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #aba6a6;
-    padding: 10px;
-}
-
-.section-description,
-.statement-description {
-    min-height: 10px;
-    background-color: #f1f3f3;
-    padding: 3px;
-}
 
 
 .sub-template {
