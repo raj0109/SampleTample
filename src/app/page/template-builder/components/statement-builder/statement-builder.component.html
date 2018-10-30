@@ -1,0 +1,3 @@
+<ng-container *ngIf="buildJSON">
+  <app-statement [(name)]="buildJSON.name" [(description)]="buildJSON.items[0].state"></app-statement>
+</ng-container>

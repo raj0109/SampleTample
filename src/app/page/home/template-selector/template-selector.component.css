@@ -1,0 +1,35 @@
+.home-main {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+}
+
+.home-main > * {
+    display: inline-block;
+    margin: 10px;
+    background-color: grey;
+    border: 2px solid black;
+    text-align: center;
+    font-weight: bold;
+    height: 100px;
+}
+
+.template-list {
+    padding: 10px;
+    width: 120px;
+    list-style-type: none;
+    
+}
+
+
+.template-list li {
+    background-color: #090f1d;
+    color: white;
+    width: 100px;
+    text-align: center;
+    padding: 10px;
+    margin: 8px;
+    cursor: pointer;
+}

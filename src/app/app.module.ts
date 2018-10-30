@@ -3,13 +3,13 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
-import { SectionComponent } from "./components/section/section.component";
-import { StatementComponent } from './components/statement/statement.component';
-import { TableComponent } from './components/table/table.component';
+import { TemplateBuilderModule } from "./page/template-builder/template-builder.module";
+import { HomeModule } from "./page/home/home.module";
+
 
 @NgModule({
-  declarations: [AppComponent, SectionComponent, StatementComponent, TableComponent],
-  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule, TemplateBuilderModule, HomeModule],
   providers: [],
   bootstrap: [AppComponent]
 })

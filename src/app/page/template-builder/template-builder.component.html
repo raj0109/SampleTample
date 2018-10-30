@@ -1,0 +1,37 @@
+<div class="main">
+  <div class="header">
+    <input [(ngModel)]="name" placeholder="Template Name" class="template__name" type="text">
+    <input [(ngModel)]="description" placeholder="Template Description" class="template__description" type="text">
+    <button (click)="handleSave()" class="btn btn-info">Save</button>
+  </div>
+  <div class="side-menu">
+    <div draggable="true" (dragstart)="dragStart($event, 'Section')" (click)="addSection()" class="tool-item" title="Add Section">Section
+    </div>
+
+    <div draggable="true" (dragstart)="dragStart($event, 'Table')" (click)="addTable()" class="tool-item" title="Add Table">Table
+    </div>
+    <div draggable="true" (dragstart)="dragStart($event, 'Statement')" (click)="addStatement()" class="tool-item" title="Add Statement">Statement
+    </div>
+    <div class="tool-item" title="ReArrange"><label>Re-Arrange<input [(ngModel)]="dragMode" type="checkbox"></label>
+    </div>
+  </div>
+  <div class="template">
+    <div class="template-page">
+      <div class="sub-template" *ngFor="let template of templates; let idx = index" (dragover)="allowDrop($event)"
+        (drop)="handleDrop($event, idx)">
+        <ng-container [ngSwitch]="template['recom'].type">
+          <div *ngSwitchCase="'section'">
+            <app-section  [buildJSON]="template['recom']"></app-section>
+          </div>
+          <div *ngSwitchCase="'statement'">
+            <app-statement-builder [buildJSON]="template['recom']"></app-statement-builder>
+          </div>
+          <div *ngSwitchCase="'table'">
+            <app-table [(value)]="template['recom']" (valueChange)="updates()"></app-table>
+          </div>
+        </ng-container>
+        <div *ngIf="dragMode" class="overlay">
+        </div>
+      </div>
+    </div>
+  </div>
