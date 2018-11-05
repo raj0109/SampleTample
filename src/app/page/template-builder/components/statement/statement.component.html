@@ -1,5 +1,5 @@
 <div class="statement-title"> <input class="full__width" [(ngModel)]="statementName" (ngModelChange)="updateName()" placeholder="Statement Title"
     type="text"> </div>
 <div class="statement-description">
-  <textarea (ngModelChange)="updateDescription()" [(ngModel)]="statementDescription" class="full__width"></textarea>
+  <textarea [(ngModel)]="statementDescription" (ngModelChange)="updateDescription()" class="full__width"></textarea>
 </div>

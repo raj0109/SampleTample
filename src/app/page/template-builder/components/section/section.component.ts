@@ -10,6 +10,9 @@ export interface ItemModel {
   name: string;
   visible: boolean;
   stateoptions: Array<ItemStateModel>;
+  state: string;
+  impression: string;
+  type: string;
 }
 
 export interface SectionModel {
@@ -32,8 +35,11 @@ export class SectionComponent implements OnChanges {
   addItem() {
     this.buildJSON.items.push({
       name: "ItemName",
-      stateoptions: [],
-      visible: true
+      stateoptions: [{state: "", impression: "", PI: ""}],
+      visible: true,
+      state: "",
+      impression: "",
+      type: "TEXT"
     });
   }
 
@@ -43,10 +49,20 @@ export class SectionComponent implements OnChanges {
       impression: "",
       PI: ""
     });
+    if (this.buildJSON.items[itemIndex].stateoptions.length > 1) {
+      this.buildJSON.items[itemIndex].type = "RADIO";
+    } else {
+      this.buildJSON.items[itemIndex].type = "TEXT";
+    }
   }
 
   deleteState(itemIndex, stateIndex) {
     this.buildJSON.items[itemIndex].stateoptions.splice(stateIndex, 1);
+    if (this.buildJSON.items[itemIndex].stateoptions.length > 1) {
+      this.buildJSON.items[itemIndex].type = "RADIO";
+    } else {
+      this.buildJSON.items[itemIndex].type = "TEXT";
+    }  
   }
 
   deleteItem(itemIndex: number) {
@@ -55,5 +71,13 @@ export class SectionComponent implements OnChanges {
 
   ngOnChanges(changes) {
     console.log(changes);
+  }
+
+  updateDefaultState(value, itemIndex) {
+    this.buildJSON.items[itemIndex].state = value;
+  }
+
+  updateDefaultImpression(value, itemIndex) {
+    this.buildJSON.items[itemIndex].impression = value;
   }
 }

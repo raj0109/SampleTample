@@ -4,7 +4,7 @@
   </div>
   <div *ngFor="let item of buildJSON.items; let itemIndex = index" class="section-item">
     <div class="section-item-name">
-      <textarea [(ngModel)]="item.name"></textarea>
+      <textarea [(ngModel)]="item.name" required></textarea>
       <label><input [(ngModel)]="item.visible" type="checkbox"><br>Show Item Name</label>
       <br><div (click)="deleteItem(itemIndex)" class="btn btn-delete">Remove</div>
     </div>
@@ -16,10 +16,18 @@
           <th>Patient Information</th>
         </tr>
         <tr *ngFor="let state of item.stateoptions; let stateIndex = index">
-          <td><textarea placeholder="State" [(ngModel)]="state.state" [title]="state.state"></textarea></td>
-          <td><textarea placeholder="Impression" [(ngModel)]="state.impression" [title]="state.impression"></textarea></td>
-          <td><textarea placeholder="Patient Information" [(ngModel)]="state.PI" [title]="state.PI"></textarea></td>
-          <td (click)="deleteState(itemIndex, stateIndex)" class="delete-cell">X</td>
+          <ng-container *ngIf="stateIndex === 0">
+            <td><textarea placeholder="State" [(ngModel)]="state.state" (ngModelChange)="updateDefaultState($event, itemIndex)" [title]="state.state" required></textarea></td>
+            <td><textarea placeholder="Impression" [(ngModel)]="state.impression" (ngModelChange)="updateDefaultImpression($event, itemIndex)" [title]="state.impression"></textarea></td>
+            <td><textarea placeholder="Patient Information" [(ngModel)]="state.PI" [title]="state.PI"></textarea></td>
+            <td (click)="deleteState(itemIndex, stateIndex)" class="delete-cell">X</td>
+          </ng-container>
+          <ng-container *ngIf="stateIndex !== 0">
+              <td><textarea placeholder="State" [(ngModel)]="state.state" [title]="state.state"></textarea></td>
+              <td><textarea placeholder="Impression" [(ngModel)]="state.impression" [title]="state.impression"></textarea></td>
+              <td><textarea placeholder="Patient Information" [(ngModel)]="state.PI" [title]="state.PI"></textarea></td>
+              <td (click)="deleteState(itemIndex, stateIndex)" class="delete-cell">X</td>
+          </ng-container>
         </tr>
         <tr>
           <td (click)="addState(itemIndex)" colspan="3">Add More State</td>

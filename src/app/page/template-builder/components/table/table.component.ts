@@ -49,23 +49,6 @@ export class TableComponent {
 
   updateTable() {
     let triggerUpdate = false;
-    const currentColumn = this.buildJSON.heading.length;
-    if (currentColumn > this.columnCount) {
-      this.buildJSON.heading.splice(
-        this.columnCount,
-        currentColumn - this.columnCount
-      );
-      triggerUpdate = true;
-    } else {
-      for (
-        let columnIndex = currentColumn;
-        columnIndex < this.columnCount;
-        columnIndex++
-      ) {
-        this.buildJSON.heading.push("");
-      }
-      triggerUpdate = true;
-    }
 
     const currentRow = this.buildJSON.items.length;
     if (currentRow > this.rowCount) {
@@ -81,6 +64,35 @@ export class TableComponent {
       }
       triggerUpdate = true;
     }
+
+    const currentColumn = this.buildJSON.heading.length;
+    if (currentColumn > this.columnCount) {
+      this.buildJSON.heading.splice(
+        this.columnCount,
+        currentColumn - this.columnCount
+      );
+      for (
+        let rowIndex = 0;
+        rowIndex < this.rowCount;
+        rowIndex++
+      ) {
+        this.buildJSON.items[rowIndex].splice(
+          this.columnCount,
+          currentColumn - this.columnCount
+        );
+      }      
+      triggerUpdate = true;
+    } else {
+      for (
+        let columnIndex = currentColumn;
+        columnIndex < this.columnCount;
+        columnIndex++
+      ) {
+        this.buildJSON.heading.push("");
+      }
+      triggerUpdate = true;
+    }
+
 
     if (triggerUpdate) {
       this.valueChange.emit(this.buildJSON);

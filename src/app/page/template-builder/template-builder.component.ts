@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-builder',
@@ -13,6 +14,9 @@ export class TemplateBuilderComponent {
 
   dragMode = false;
 
+  constructor(private http: HttpClient) {
+
+  }
   addSection() {
     this.templates.push(this.getNewTemplate("Section"));
   }
@@ -43,8 +47,11 @@ export class TemplateBuilderComponent {
           items: [
             {
               name: "",
-              stateoptions: [],
-              visible: true
+              stateoptions: [{state: "", impression: ""}],
+              visible: true,
+              type: "TEXT",
+              state: "",
+              impression: ""
             }
           ]
         };
@@ -83,6 +90,9 @@ export class TemplateBuilderComponent {
   handleSave() {
     const json = {name: this.name, description: this.description, template: this.templates};
     console.log(JSON.stringify(json));
+    this.http.post('templates', json).subscribe(() => {
+      console.log('success');
+    });
   }
 
   updates() {

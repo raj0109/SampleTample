@@ -15,6 +15,10 @@
   font-size: 13px;
 }
 
+.section-item-name > textarea {
+  border: black 2px solid;
+
+}
 .item-state-table {
   background-color: white;
 }
